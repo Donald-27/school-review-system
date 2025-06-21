@@ -45,8 +45,6 @@ def login():
             }
         }), 200
     return jsonify({"error": "Invalid email or password"}), 401
-
-# Get all users (Admin access simulation)
 @users_bp.route('/', methods=['GET'])
 def get_users():
     users = User.query.all()
