@@ -28,8 +28,6 @@ def signup():
         "name": user.name,
         "email": user.email
     }), 201
-
-# User login
 @users_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
