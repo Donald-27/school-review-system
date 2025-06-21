@@ -40,7 +40,6 @@ def update_review(id):
     review = Review.query.get(id)
     if not review:
         return jsonify({'error': 'Review not found'}), 404
-
     data = request.get_json()
     for field in ['review', 'is_standout', 'upvotes']:
         if field in data:
