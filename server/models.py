@@ -1,3 +1,4 @@
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
@@ -24,3 +25,15 @@ db = SQLAlchemy(metadata=metadata)
     password = db.Column(db.String(128), nullable=False)
 
     reviews = db.relationship('Review', back_populates='user', cascade='all, delete')
+class School(db.Model):
+    __tablename__ = 'schools'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    region = db.Column(db.String(50))
+    model = db.Column(db.String(20))
+    type = db.Column(db.String(20))  
+    level = db.Column(db.String(30)) 
+    description = db.Column(db.Text)
+
+    reviews = db.relationship('Review', back_populates='school', cascade='all, delete')
