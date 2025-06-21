@@ -10,7 +10,6 @@ def signup():
     email = data.get('email')
     phone = data.get('phone')
     password = data.get('password')
-
     if not name or not email or not password:
         return jsonify({"error": "Name, email, and password are required"}), 400
 
