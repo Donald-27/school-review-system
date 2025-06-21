@@ -1,9 +1,6 @@
-# server/routes/schools.py
 from flask import Blueprint, request, jsonify
 from models import db, School, SchoolCategory, SchoolModel, SchoolType
-
 schools_bp = Blueprint('schools', __name__, url_prefix='/schools')
-
 @schools_bp.route('/', methods=['GET'])
 def get_schools():
     schools = School.query.all()
@@ -40,7 +37,6 @@ def create_school():
         db.session.commit()
 
         return jsonify(new_school.to_dict()), 201
-
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
@@ -50,11 +46,11 @@ def update_school(id):
     if not school:
         return jsonify({'error': 'School not found'}), 404
 
+
     data = request.get_json()
     for field in ['name', 'region', 'description', 'type_id', 'model_id', 'category_id']:
         if field in data:
             setattr(school, field, data[field])
-
     db.session.commit()
     return jsonify(school.to_dict()), 202
 
@@ -63,7 +59,6 @@ def delete_school(id):
     school = School.query.get(id)
     if not school:
         return jsonify({'error': 'School not found'}), 404
-
     db.session.delete(school)
     db.session.commit()
     return '', 204
