@@ -3,8 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, User
 
 users_bp = Blueprint('users_bp', __name__, url_prefix='/users')
-
-# Create a user (Sign up)
 @users_bp.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
