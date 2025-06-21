@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import db, User
+from server.models import db, User
 
 users_bp = Blueprint('users_bp', __name__, url_prefix='/users')
+
 @users_bp.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
@@ -10,6 +11,7 @@ def signup():
     email = data.get('email')
     phone = data.get('phone')
     password = data.get('password')
+
     if not name or not email or not password:
         return jsonify({"error": "Name, email, and password are required"}), 400
 
@@ -27,6 +29,7 @@ def signup():
         "name": user.name,
         "email": user.email
     }), 201
+
 @users_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -44,6 +47,7 @@ def login():
             }
         }), 200
     return jsonify({"error": "Invalid email or password"}), 401
+
 @users_bp.route('/', methods=['GET'])
 def get_users():
     users = User.query.all()

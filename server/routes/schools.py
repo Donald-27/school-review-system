@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from models import db, School, SchoolCategory, SchoolModel, SchoolType
+from ..models import db, School
+
 schools_bp = Blueprint('schools', __name__, url_prefix='/schools')
 @schools_bp.route('/', methods=['GET'])
 def get_schools():
@@ -62,3 +63,17 @@ def delete_school(id):
     db.session.delete(school)
     db.session.commit()
     return '', 204
+class SchoolCategory(db.Model):
+    __tablename__ = 'school_categories'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+
+class SchoolModel(db.Model):
+    __tablename__ = 'school_models'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+
+class SchoolType(db.Model):
+    __tablename__ = 'school_types'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
