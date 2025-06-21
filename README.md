@@ -88,5 +88,4 @@ You can test routes like:
 GET http://localhost:5555/users
 GET http://localhost:5555/schools
 POST http://localhost:5555/reviews
-When sending data with POST or PATCH, remember to send JSON in the request body.
 
