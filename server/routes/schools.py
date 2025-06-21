@@ -1,5 +1,4 @@
 # server/routes/schools.py
-
 from flask import Blueprint, request, jsonify
 from models import db, School, SchoolCategory, SchoolModel, SchoolType
 
