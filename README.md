@@ -1,4 +1,4 @@
-School Review System
+  SHOOL REVIEW SYSTEM
 This is a simple Flask web app that allows users to browse and review secondary schools. You can sign up, log in, and leave a review for a school. Admins can view all schools and reviews. Schools can also be filtered by things like region, type (boarding or day), and pathways (like STEM).
 
 What this project does
