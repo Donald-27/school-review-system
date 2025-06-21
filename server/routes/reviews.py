@@ -52,7 +52,6 @@ def update_review(id):
     db.session.commit()
     return jsonify(review.to_dict()), 202
 
-
 @reviews_bp.route('/<int:id>', methods=['DELETE'])
 def delete_review(id):
     review = Review.query.get(id)
