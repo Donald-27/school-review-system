@@ -16,7 +16,6 @@ def get_review(id):
     if not review:
         return jsonify({'error': 'Review not found'}), 404
     return jsonify(review.to_dict()), 200
-
 @reviews_bp.route('/', methods=['POST'])
 def create_review():
     data = request.get_json()
@@ -35,7 +34,6 @@ def create_review():
         return jsonify(new_review.to_dict()), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 400
-
 
 @reviews_bp.route('/<int:id>', methods=['PATCH'])
 def update_review(id):
