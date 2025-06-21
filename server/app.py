@@ -19,3 +19,8 @@ def create_app():
     app.register_blueprint(reviews_bp, url_prefix="/reviews")
 
     return app
+
+app = create_app()
+
+if __name__ == "__main__":
+    app.run(port=5555)
